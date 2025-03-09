@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <DotPattern className={"z-0"} />
+        <DotPattern className={"-z-1"} />
 
         {children}
       </body>
