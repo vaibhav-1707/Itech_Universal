@@ -120,11 +120,10 @@ const AboutSection = () => {
                   >
                     <TextAnimate>
                       Itech Universal FZE is a leading e-commerce company
-                      operating in both the UK and UAE. Our expertise spans
+                      operating in USA, UK and UAE. Our expertise spans
                       across private label, wholesale, and product research,
                       ensuring we stay ahead of market trends. We partner with
-                      premium brands such as TOM FORD, Hourglass, Drunk
-                      Elephant, and Dasique.
+                      premium brands.
                     </TextAnimate>
                   </motion.div>
                   <motion.div

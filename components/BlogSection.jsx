@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { InteractiveHoverButton } from "./magicui/interactive-hover-button";
+import Link from "next/link"; // ✅ Added Link import
 
 const BlogSection = () => {
   const carouselRef = useRef(null);
@@ -37,7 +38,7 @@ const BlogSection = () => {
       title: "Amazon FBA Private Label vs. Wholesale",
       excerpt:
         "Discover the pros and cons of different Amazon FBA business models...",
-      link: "#",
+      link: "/blog/amazon-fba",
     },
     {
       title: "Choosing Winning Health & Beauty Products",
@@ -102,7 +103,10 @@ const BlogSection = () => {
                   <p className="text-gray-600 mb-4 group-hover:text-gray-900 transition-colors duration-300">
                     {post.excerpt}
                   </p>
-                  <InteractiveHoverButton>Read More</InteractiveHoverButton>
+                  {/* ✅ Wrapped button in Link */}
+                  <Link href={post.link}>
+                    <InteractiveHoverButton>Read More</InteractiveHoverButton>
+                  </Link>
                 </motion.div>
               </motion.div>
             ))}
