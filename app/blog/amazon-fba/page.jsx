@@ -1,11 +1,9 @@
-import { AmazonFBABlog } from '@/components/AmazonFBABlog';
+import React from 'react'
 
-export default function AmazonFBAPage() {
+const page = () => {
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12 px-4 md:px-8 lg:px-16">
-        <AmazonFBABlog isFullPage={true} />
-      </div>
-    </main>
-  );
-} 
+    <div>blog</div>
+  )
+}
+
+export default page
