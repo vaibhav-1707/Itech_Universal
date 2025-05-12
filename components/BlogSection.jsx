@@ -38,19 +38,19 @@ const BlogSection = () => {
       title: "Amazon FBA Private Label vs. Wholesale",
       excerpt:
         "Discover the pros and cons of different Amazon FBA business models...",
-      link: "/blog/amazon-fba",
+      link: "/blog/blog1",
     },
     {
       title: "Choosing Winning Health & Beauty Products",
       excerpt:
         "Learn how to identify profitable products in the beauty industry...",
-      link: "#",
+      link: "/blog/blog2",
     },
     {
       title: "Scaling Your Amazon FBA Business",
       excerpt:
         "Strategies for expanding your business in the UK and UAE markets...",
-      link: "#",
+      link: "/blog/blog3",
     },
   ];
 

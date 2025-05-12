@@ -1,17 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { ScrollProgress } from "./magicui/scroll-progress";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const router = useRouter();
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const currentPath = window.location.pathname;
+
+    // If not already on the homepage, navigate to it with a hash
+    if (currentPath !== "/") {
+      router.push(`/#${sectionId}`);
       setIsOpen(false);
+    } else {
+      // If already on the homepage, scroll smoothly
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsOpen(false);
+      }
     }
   };
 
@@ -20,36 +31,19 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
-            <span className="text-3xl font-bold text-gray-800">
-              <Image src="/logo1.png" width={200} height={10} alt="Logo" />
-            </span>
+            <Image src="/logo1.png" width={200} height={40} alt="Logo" />
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors"
-            >
-              About Us
-            </button>
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors"
-            >
-              What We Do
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors"
-            >
-              Contact Us
-            </button>
+            {["home", "about", "services", "contact"].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-semibold transition-colors"
+              >
+                {section === "services" ? "What We Do" : section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            ))}
           </div>
 
           <div className="md:hidden">
@@ -62,42 +56,30 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Dropdown */}
       <div
-        className={`md:hidden fixed top-16 left-0 right-0 bg-white backdrop-blur-xl border-t transition-all duration-700 ease-in-out ${
+        className={`md:hidden fixed top-16 left-0 right-0 bg-white border-t transition-all duration-700 ease-in-out ${
           isOpen ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0"
         } overflow-hidden`}
       >
         <div
-          className={`px-2 py-3 space-y-1 transition-transform backdrop-blur-xl duration-700 ease-in-out ${
+          className={`px-2 py-3 space-y-1 transition-transform duration-700 ease-in-out ${
             isOpen ? "transform-none" : "-translate-y-full"
           }`}
         >
-          <button
-            onClick={() => scrollToSection("home")}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-          >
-            Home
-          </button>
-          <button
-            onClick={() => scrollToSection("about")}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-          >
-            About Us
-          </button>
-          <button
-            onClick={() => scrollToSection("services")}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-          >
-            What We Do
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-          >
-            Contact Us
-          </button>
+          {["home", "about", "services", "contact"].map((section) => (
+            <button
+              key={section}
+              onClick={() => scrollToSection(section)}
+              className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+            >
+              {section === "services" ? "What We Do" : section.charAt(0).toUpperCase() + section.slice(1)}
+            </button>
+          ))}
         </div>
       </div>
+
       <ScrollProgress className="top-16" />
     </nav>
   );

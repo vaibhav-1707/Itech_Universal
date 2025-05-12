@@ -1,12 +1,20 @@
 'use client';
 
+import { useRouter } from "next/navigation";
+
 // import DotPattern from './magicui/dot-pattern'; // Uncomment and adjust the import if needed
 
 const HomeSection = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    aboutSection?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // const scrollToAbout = () => {
+  //   const aboutSection = document.getElementById('about');
+  //   aboutSection?.scrollIntoView({ behavior: 'smooth' });
+  // };
+
+     const router = useRouter();
+     const redirectToReadMore = () =>{
+      router.push("/read-more")
+     }
+
 
   return (
     <section
@@ -25,7 +33,7 @@ const HomeSection = () => {
             serving USA, UK and UAE markets
           </p>
           <button
-            onClick={scrollToAbout}
+            onClick={redirectToReadMore}
             className="relative z-10 bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium"
           >
             Learn More

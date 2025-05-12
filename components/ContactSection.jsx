@@ -109,7 +109,7 @@ const ContactSection = () => {
                     </div>
                     <div className="flex items-center space-x-3 text-muted-foreground">
                       <Phone className="h-5 w-5" />
-                      <p>+971 58 570 1432</p>
+                      <p>+44 7723 566598</p>
                     </div>
                   </div>
                 </div>
